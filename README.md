@@ -13,5 +13,8 @@ python -m venv .sampleproject
 source .sampleproject/bin/activate
 pip install -r requirements-dev.txt
 cp contrib/env-sample .env
+KEY=$(python contrib/secret_gen.py)
+sed -i "/^SECRET_KEY=/c\SECRET_KEY=${KEY}" .env
 cat .env
+
 ```
